@@ -1,0 +1,76 @@
+    #MediaPopup-viewer-modal iframe {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    a.section__link-ar.js-section__link-ar {
+        position: relative;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.43;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #171a1c;
+        padding: 10px 10px 10px 55px;
+    }
+
+    @media screen and (max-width: 1070px) {
+    a.section__link-ar.js-section__link-ar {
+            font-size: 12px;
+        }
+    }
+    #MediaPopup-trigger > a > span:before {
+        position: absolute;
+        content: "";
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 15px;
+        width: 30px;
+        height: 30px;
+        background-image: url(https://content-bluesound-com.s3.amazonaws.com/uploads/2022/06/ico-ar.png);
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;
+    }
+
+    .section__content-hidden.js-section__content-hidden {
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: max-height 0.4s, visibility 0.4s, opacity 0.4s, margin 0.6s;
+        -o-transition: max-height 0.4s, visibility 0.4s, opacity 0.4s, margin 0.6s;
+        transition: max-height 0.4s, visibility 0.4s, opacity 0.4s, margin 0.6s;
+    }
+
+    .section__content-hidden.js-section__content-hidden.is-visible {
+        opacity: 1;
+        visibility: visible;
+        margin: 30px 0 0;
+        max-height: 1000px;
+    }
+
+    #MediaPopup-trigger {
+        text-align: center;
+        top: 40px;
+        position: relative;
+    }
+
+    @media screen and (max-width: 1070px) {
+        #MediaPopup-trigger {
+            bottom: 225px;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        #MediaPopup-trigger {
+            bottom: 425px;
+            text-align: left;
+        }
+    }
+    .aligncenter {
+        text-align: center;
+    }

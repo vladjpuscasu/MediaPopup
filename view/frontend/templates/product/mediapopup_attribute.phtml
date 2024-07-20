@@ -1,0 +1,135 @@
+<?php $customAttributes = $block->getmediapopupLinkAttributes(); ?>
+<?php if (!empty($customAttributes)) { ?>
+    <div id="mediapopup-trigger">          
+        <a href="#" class="section__link-ar js-section__link-ar">
+            <span>View Media</span>
+        </a>
+    </div>
+
+    <div class="mediapopup-attributes">
+        <script type="text/javascript">
+            require(['jquery'], function ($) {
+                $(document).ready(function () {
+                    $("a.section__link-ar.js-section__link-ar").on("click", function() {
+                        $(".popup-overlay, .section__content-hidden.js-section__content-hidden").addClass("is-visible");
+                    });
+
+                    // Removes the "active" class to .popup and .popup-content when the "Close" button is clicked
+                    $("#modal-close-btn, #mediapopup-viewer-modal").on("click", function() {
+                        $(".popup-overlay, .section__content-hidden.js-section__content-hidden").removeClass("is-visible");
+                    });
+                    $('#mediapopup_link_default').css("display", "block");
+                    // Attach an event listener to color swatches
+                    $(document).on('click', '.swatch-option.color', function () {
+                        // Get the selected color
+                        var selectedColor = $('.swatch-attribute-selected-option').text().toLowerCase().replace(/\s+/g, '_');
+                        console.log('Selected Color:', selectedColor);
+                        
+                        // Hide all attribute values
+                        $('[id^="mediapopup_"]').not('#mediapopup-trigger').css("display", "none");
+
+                        // Show the attribute value corresponding to the selected color
+                        if (selectedColor == "") {
+                            $('#mediapopup_link_default').css("display", "block");
+                        } else {
+                            $('#mediapopup_link_' + selectedColor).css("display", "block");
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <div class="section__content-hidden js-section__content-hidden">
+            <div id="mediapopup-viewer-modal" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(0, 0, 0, 0.5); z-index: 2147483647;">
+                <?php foreach ($customAttributes as $attributeName => $attributeValue) : ?>
+                    <div id="<?php echo $attributeName; ?>" style="display: none; position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 75%; height: 65%;">
+                        <div id="modal-close-btn" style="position: absolute; right: 11px; top: -7px; font-size: 35px; cursor: pointer;">&times;</div>           
+                        <?php echo $attributeValue; ?>     
+                    </div>
+                <?php endforeach; ?>
+            </div>  
+        </div>
+    </div>
+
+<style>
+    #mediapopup-viewer-modal iframe {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    #mediapopup-trigger html{
+        overflow-y: hidden;
+    }
+    a.section__link-ar.js-section__link-ar {
+        position: relative;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.43;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #171a1c;
+        padding: 10px 10px 10px 55px;
+    }
+
+    @media screen and (max-width: 1070px) {
+    a.section__link-ar.js-section__link-ar {
+            font-size: 12px;
+        }
+    }
+    #mediapopup-trigger > a > span:before {
+        position: absolute;
+        content: "";
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 15px;
+        width: 30px;
+        height: 30px;
+        background-image: url(https://vladpuscasu-dev.com/wp-content/uploads/2024/07/ico-ar.png);
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;
+    }
+
+    .section__content-hidden.js-section__content-hidden {
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: max-height 0.4s, visibility 0.4s, opacity 0.4s, margin 0.6s;
+        -o-transition: max-height 0.4s, visibility 0.4s, opacity 0.4s, margin 0.6s;
+        transition: max-height 0.4s, visibility 0.4s, opacity 0.4s, margin 0.6s;
+    }
+
+    .section__content-hidden.js-section__content-hidden.is-visible {
+        opacity: 1;
+        visibility: visible;
+        margin: 30px 0 0;
+        max-height: 1000px;
+    }
+
+    #mediapopup-trigger {
+        text-align: center;
+        top: 40px;
+        position: relative;
+    }
+
+    @media screen and (max-width: 1070px) {
+        #mediapopup-trigger {
+            bottom: 225px;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        #mediapopup-trigger {
+            top: 0;
+            text-align: center;
+            padding-bottom: 30px;
+        }
+    }
+    .aligncenter {
+        text-align: center;
+    }
+</style>
+<?php } ?>

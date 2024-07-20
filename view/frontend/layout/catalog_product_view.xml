@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.media">
+            <block class="VPuscasu\MediaPopup\Block\Product\MediaPopupAttribute" name="mediapopup.attribute" template="VPuscasu_MediaPopup::product/mediapopup_attribute.phtml"/>
+        </referenceBlock>
+    </body>
+    
+</page>
